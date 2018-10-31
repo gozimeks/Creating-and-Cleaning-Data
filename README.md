@@ -8,8 +8,10 @@ The test and training datasets are worked on separately.
 
 NOTE: This process described did not work for fread so read.table was used.
 
-After each table is loaded, label and subject columns  are added using cbind and all columns are renamed. The grep command is then used to pair down the data to include needed columns and both datasets are merged.
+After each table is loaded, label and subject columns  are added using cbind and all columns are renamed. The grep command is then used to pair down the data to include needed columns and both datasets are merged using the merge command.
 
 To facilitate aggregation the activity column is coerced to factor. A new data table with aggregate data is created and a csv file for further analysis derived from it.
+
+The scritp is well commented.
 
 
