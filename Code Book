@@ -1,0 +1,66 @@
+Description:
+This project creates a script to collect and clean 2 datasets and builds a tidy data file to be used for further analysis. It uses work done by 
+Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and 
+Jorge L. Reyes-Ortiz in the study: Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living  (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+
+The download is available here:
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+A description of the work is available here:
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+
+Process and Variables:
+
+Subset variable names by creating a vector, cvector from variables 
+supplied by features.txt to use to change column names. This is needed to make it easier to identify columns for what they are. Also create a holding places for labels and activities. Both are derived from activity_labels.txt. 
+
+Variables:
+cvector: Derived using gsub. Holds the table columns names needed for renaming.
+activity_labels: staging label table
+features: staging features table
+
+
+
+#work on testfiles
+Create test data table. Add label and subject columns to dataset. Rename
+all columns using c("subject","activity') and cvector. After renaming pair down to only include data contained in columns with mean and standard deviation.
+
+Variables:
+testdata: staging 
+testlabel: staging y_test.txt table
+testsubject: staging subject_test.txt
+subtest: staging table to facilitate pairing down data.
+myvars: staging table to facilitate pairing down data
+newtestdata: staging combined subject, activity and test data table
+
+
+#work on training files
+Create test data table. Add label and subject columns to dataset. Rename
+all columns using c("subject","activity') and cvector. After renaming pair down to only include data contained in columns with mean and standard deviation.
+
+Variables:
+traindata: staging training dataset
+trainlabel: staging y_train.txt
+trainsubject: staging subject_train.txt
+subtrain: staging table to facilitate pairing down data
+myvars: staging table to facilitate pairing down data
+newtraindata: staging combined subject, activity and train data table
+
+
+
+Combine both datasets. Both have identical definitions so a simple "all=TRUE" will suffice
+
+Variables:
+combineddata: Merged  renamed and paired down test and train data
+
+
+
+To facilitate aggregation, coerce activity to factor and create Tidy data with averages per observation
+
+Variables:
+Dhold: New aggregated table
+
+Using this table data is written to summarydata.csv for further and future analysis
+
+
